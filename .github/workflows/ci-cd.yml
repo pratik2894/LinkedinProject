@@ -80,7 +80,10 @@ jobs:
           java-version: '17'
           cache: maven
       - name: Build & Deploy chatService
-        run: mvn -B -pl chatService -am clean deploy -s .github/maven-settings.xml
+        working-directory: chatService
+        run: |
+          mvn -B clean compile package install deploy \
+            -s ../.github/maven-settings.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
