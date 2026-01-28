@@ -1,0 +1,213 @@
+name: Maven CI-CD
+
+permissions:
+  contents: read
+  packages: write
+
+on:
+  push:
+    branches: [ "CI-CD-pipeline-setup" ]
+  pull_request:
+
+jobs:
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      apiGateWayservice: ${{ steps.filter.outputs.apiGateWayservice }}
+      chatService: ${{ steps.filter.outputs.chatService }}
+      connectionService: ${{ steps.filter.outputs.connectionService }}
+      eurekaServiceRegistery: ${{ steps.filter.outputs.eurekaServiceRegistery }}
+      feedService: ${{ steps.filter.outputs.feedService }}
+      jobsService: ${{ steps.filter.outputs.jobsService }}
+      notificationService: ${{ steps.filter.outputs.notificationService }}
+      postService: ${{ steps.filter.outputs.postService }}
+      recommendationService: ${{ steps.filter.outputs.recommendationService }}
+      userService: ${{ steps.filter.outputs.userService }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            apiGateWayservice:
+              - 'apiGateWayservice/**'
+            chatService:
+              - 'chatService/**'
+            connectionService:
+              - 'connectionService/**'
+            eurekaServiceRegistery:
+              - 'eurekaServiceRegistery/**'
+            feedService:
+              - 'feedService/**'
+            jobsService:
+              - 'jobsService/**'
+            notificationService:
+              - 'notificationService/**'
+            postService:
+              - 'postService/**'
+            recommendationService:
+              - 'recommendationService/**'
+            userService:
+              - 'userService/**'
+
+  build-apiGateWayservice:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.apiGateWayservice == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+      - name: Build & Deploy apiGateWayservice
+        run: mvn -B -pl apiGateWayservice -am clean deploy -s .github/maven-settings.xml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  build-chatService:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.chatService == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+      - name: Build & Deploy chatService
+        run: mvn -B -pl chatService -am clean deploy -s .github/maven-settings.xml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  build-connectionService:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.connectionService == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+      - name: Build & Deploy connectionService
+        run: mvn -B -pl connectionService -am clean deploy -s .github/maven-settings.xml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  build-eurekaServiceRegistery:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.eurekaServiceRegistery == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+      - name: Build & Deploy eurekaServiceRegistery
+        run: mvn -B -pl eurekaServiceRegistery -am clean deploy -s .github/maven-settings.xml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  build-feedService:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.feedService == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+      - name: Build & Deploy feedService
+        run: mvn -B -pl feedService -am clean deploy -s .github/maven-settings.xml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  build-jobsService:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.jobsService == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+      - name: Build & Deploy jobsService
+        run: mvn -B -pl jobsService -am clean deploy -s .github/maven-settings.xml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  build-notificationService:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.notificationService == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+      - name: Build & Deploy notificationService
+        run: mvn -B -pl notificationService -am clean deploy -s .github/maven-settings.xml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  build-postService:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.postService == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+      - name: Build & Deploy postService
+        run: mvn -B -pl postService -am clean deploy -s .github/maven-settings.xml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  build-recommendationService:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.recommendationService == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+      - name: Build & Deploy recommendationService
+        run: mvn -B -pl recommendationService -am clean deploy -s .github/maven-settings.xml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  build-userService:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.userService == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+      - name: Build & Deploy userService
+        run: mvn -B -pl userService -am clean deploy -s .github/maven-settings.xml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
