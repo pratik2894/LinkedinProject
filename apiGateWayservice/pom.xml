@@ -11,7 +11,7 @@
 	<groupId>com.pratik.linkedinServices</groupId>
 	<artifactId>apigatewayservice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>apiGateWayservice</name>
+	<name>apigatewayservice</name>
 	<description>Linkedin app Api Gateway service</description>
 	<url/>
 	<licenses>
