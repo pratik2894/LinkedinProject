@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.pratik.linkedinServices</groupId>
-	<artifactId>apiGateWayservice</artifactId>
+	<artifactId>apigatewayservice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>apiGateWayservice</name>
 	<description>Linkedin app Api Gateway service</description>
@@ -103,7 +103,7 @@
 		<repository>
 			<id>github</id>
 			<name>GitHub Packages</name>
-			<url>https://maven.pkg.github.com/pratik2894/apiGateWayservice</url>
+			<url>https://maven.pkg.github.com/pratik2894/apigatewayservice</url>
 		</repository>
 	</distributionManagement>
 
