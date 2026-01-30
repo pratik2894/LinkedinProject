@@ -22,7 +22,7 @@
     <description>Parent POM for LinkedIn microservices</description>
 
     <modules>
-        <module>apigatewayservice</module>
+        <module>apiGateWayservice</module>
         <module>eurekaServiceRegistery</module>
         <module>chatService</module>
         <module>connectionService</module>
