@@ -84,7 +84,7 @@ jobs:
       - name: Build & Deploy chatService
         working-directory: chatService
         run: |
-          mvn -B clean compile package install deploy \
+          mvn -B clean compile package install  \
             -s ../.github/maven-settings.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -117,7 +117,7 @@ jobs:
           java-version: '17'
           cache: maven
       - name: Build & Deploy eurekaServiceRegistery
-        run: mvn -B -pl eurekaServiceRegistery -am clean deploy -s .github/maven-settings.xml
+        run: mvn -B -pl eurekaServiceRegistery -am clean compile package install -s .github/maven-settings.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -133,7 +133,7 @@ jobs:
           java-version: '17'
           cache: maven
       - name: Build & Deploy feedService
-        run: mvn -B -pl feedService -am clean deploy -s .github/maven-settings.xml
+        run: mvn -B -pl feedService -am clean compile package install -s .github/maven-settings.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -149,7 +149,7 @@ jobs:
           java-version: '17'
           cache: maven
       - name: Build & Deploy jobsService
-        run: mvn -B -pl jobsService -am clean deploy -s .github/maven-settings.xml
+        run: mvn -B -pl jobsService -am clean compile package install -s .github/maven-settings.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -165,7 +165,7 @@ jobs:
           java-version: '17'
           cache: maven
       - name: Build & Deploy notificationService
-        run: mvn -B -pl notificationService -am clean deploy -s .github/maven-settings.xml
+        run: mvn -B -pl notificationService -am clean compile package install -s .github/maven-settings.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -181,7 +181,7 @@ jobs:
           java-version: '17'
           cache: maven
       - name: Build & Deploy postService
-        run: mvn -B -pl postService -am clean deploy -s .github/maven-settings.xml
+        run: mvn -B -pl postService -am clean compile package install -s .github/maven-settings.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -197,7 +197,7 @@ jobs:
           java-version: '17'
           cache: maven
       - name: Build & Deploy recommendationService
-        run: mvn -B -pl recommendationService -am clean deploy -s .github/maven-settings.xml
+        run: mvn -B -pl recommendationService -am clean compile package install -s .github/maven-settings.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -213,6 +213,6 @@ jobs:
           java-version: '17'
           cache: maven
       - name: Build & Deploy userService
-        run: mvn -B -pl userService -am clean deploy -s .github/maven-settings.xml
+        run: mvn -B -pl userService -am clean compile package install -s .github/maven-settings.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
