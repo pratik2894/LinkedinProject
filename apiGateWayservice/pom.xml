@@ -8,10 +8,10 @@
 		<version>3.4.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.services</groupId>
-	<artifactId>apiGateWayservice</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>apiGateWayservice</name>
+	<groupId>com.pratik.linkedinServices</groupId>
+	<artifactId>apigatewayservice</artifactId>
+	<version>0.0.2-SNAPSHOT</version>
+	<name>apigatewayservice</name>
 	<description>Linkedin app Api Gateway service</description>
 	<url/>
 	<licenses>
@@ -98,5 +98,13 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>GitHub Packages</name>
+			<url>https://maven.pkg.github.com/pratik2894/apigatewayservice</url>
+		</repository>
+	</distributionManagement>
 
 </project>
