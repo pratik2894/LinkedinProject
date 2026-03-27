@@ -1,7 +1,6 @@
 package com.services.userService.models;
 
 import lombok.Data;
-
 import java.time.LocalDate;
 import java.util.UUID;
 

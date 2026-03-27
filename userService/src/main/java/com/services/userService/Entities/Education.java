@@ -1,9 +1,6 @@
 package com.services.userService.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.sql.Timestamp;
@@ -12,11 +9,17 @@ import java.util.UUID;
 
 @Data
 @Entity
+@Table(name = "user_education")
 public class Education {
-    private UUID userId;
+
     @Id
     @GeneratedValue( strategy = GenerationType.UUID)
-    private UUID educationId;
+    @Column(unique = true)
+    private UUID Id;
+
+    @ManyToOne
+    @JoinColumn(name = "userId" )
+    private userModel user;
     private String degree;
     private String fieldOfStudy;
     private Timestamp startDate;

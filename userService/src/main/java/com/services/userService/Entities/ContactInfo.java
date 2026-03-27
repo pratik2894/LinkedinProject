@@ -1,21 +1,23 @@
 package com.services.userService.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @Data
 @Entity
+@Table(name = "contact_info")
 public class ContactInfo {
-    private UUID userId;
     @Id
     @GeneratedValue( strategy = GenerationType.UUID)
-    private UUID contactId;
-    private Integer contactNumber;
+    @Column(unique = true)
+    private String Id;
+    @ManyToOne
+    @JoinColumn(name = "userId") // FK column
+    private userModel user;
+    private List<Integer> contactNumber;
     private String address;
     private LocalDate DOB;
     private String webSite;
