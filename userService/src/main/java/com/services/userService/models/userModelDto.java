@@ -2,13 +2,12 @@ package com.services.userService.models;
 
 
 import lombok.Data;
-import com.services.userService.models.position;
 
 import java.util.List;
 import java.util.UUID;
 
 @Data
-public class userModel {
+public class userModelDto {
     private UUID userId;
     private String username;
     private String firstName;
@@ -20,4 +19,5 @@ public class userModel {
     private String Country;
     private String City;
     private List<ContactInfo> contactInfo;
+    private String eventType;
 }

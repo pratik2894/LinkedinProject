@@ -2,10 +2,7 @@ package com.services.userService.Entities;
 
 import com.services.userService.constants.EmployementTypes;
 import com.services.userService.constants.Sources;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.sql.Timestamp;
@@ -14,11 +11,18 @@ import java.util.UUID;
 
 @Data
 @Entity
+@Table(name = "company_positions")
 public class position {
-    private UUID userId;
+
     @Id
     @GeneratedValue( strategy = GenerationType.UUID)
-    private UUID positionId;
+    @Column(unique = true)
+    private String Id;
+
+    @ManyToOne
+    @JoinColumn(name = "userId"
+    )
+    private userModel user;
     private String title;
     private EmployementTypes employementTypes;
     private String company;
