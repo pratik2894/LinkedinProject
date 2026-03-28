@@ -32,6 +32,7 @@
         <module>postService</module>
         <module>recommendationService</module>
         <module>userService</module>
+        <module>dataBaseService</module>
     </modules>
 
     <!-- Centralized versions -->
