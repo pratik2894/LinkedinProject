@@ -1,6 +1,8 @@
 package com.services.userService.models;
 
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 
 import java.util.List;
@@ -20,4 +22,24 @@ public class userModelDto {
     private String City;
     private List<ContactInfo> contactInfo;
     private String eventType;
+    private String email;
+
+    @Override
+    public String toString() {
+        return "userModelDto{" +
+                "userId=" + userId +
+                ", username='" + username + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", headLine='" + headLine + '\'' +
+                ", positions=" + positions +
+                ", Industry='" + Industry + '\'' +
+                ", education=" + education +
+                ", Country='" + Country + '\'' +
+                ", City='" + City + '\'' +
+                ", contactInfo=" + contactInfo +
+                ", eventType='" + eventType + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }

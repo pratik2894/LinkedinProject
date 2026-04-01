@@ -36,4 +36,5 @@ public class userModel {
     @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL , orphanRemoval = true)
     private List<ContactInfo> contactInfo;
     private String eventType;
+    private String email;
 }
