@@ -17,7 +17,7 @@ public class UserDbserviceHandler {
     private UserServiceQueries userServiceQueries;
 
     public void CreateUser(User user){
-        userServiceQueries.CreateUser(user.getUserId(), user.getCity(), user.getFirstName(),  user.getLastName(),  user.getUsername(), user.getCountry());
+        userServiceQueries.CreateUser(user.getUserId(), user.getCity(), user.getFirstName(),  user.getLastName(),  user.getUsername(), user.getCountry() , user.getEmail());
     }
 
 }
