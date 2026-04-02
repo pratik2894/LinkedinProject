@@ -3,6 +3,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
+import java.util.Map;
 
 
 @Getter
@@ -11,6 +12,7 @@ public class ApiResponse <T>{
 
     private String status;
     private String message;
+    private Map<String , String> validationErrorMessage;
 
     public String getStatus() {
         return status;
@@ -26,6 +28,14 @@ public class ApiResponse <T>{
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public Map<String, String> getValidationErrorMessage() {
+        return validationErrorMessage;
+    }
+
+    public void setValidationErrorMessage(Map<String, String> validationErrorMessage) {
+        this.validationErrorMessage = validationErrorMessage;
     }
 
     public T getData() {
@@ -51,6 +61,13 @@ public class ApiResponse <T>{
         this.status = status;
         this.message = message;
         this.data = data;
+        this.timestamp = LocalDateTime.now();
+    }
+    public ApiResponse(String status, String message, Map<String , String> validationErrorMessage) {
+        this.status = status;
+        this.message = message;
+        this.data = null;
+        this.validationErrorMessage = validationErrorMessage;
         this.timestamp = LocalDateTime.now();
     }
 }

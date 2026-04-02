@@ -4,9 +4,11 @@ import com.services.userService.configuration.ApiResponse;
 import com.services.userService.configuration.ResponseUtil;
 import com.services.userService.models.userModelDto;
 import com.services.userService.service.UserService;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Objects;
@@ -23,14 +25,22 @@ public class userServiceController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<ApiResponse<?>> createUser(@RequestBody userModelDto userModelDto) {
-        userModelDto userModelDto1 = userService.userCreateEvent(userModelDto);
-        if (Objects.isNull(userModelDto1)) {
-            log.error("User creation failed, received null response");
-            return ResponseEntity.ok(ResponseUtil.error("Issue occurred while creating the user"));
+    public ResponseEntity<ApiResponse<?>> createUser(@Valid @RequestBody userModelDto userModelDto)  {
+        try {
+            userModelDto userModelDto1 = userService.userCreateEvent(userModelDto);
+            if (Objects.isNull(userModelDto1)) {
+                log.error("User creation failed, received null response");
+                return ResponseEntity.ok(ResponseUtil.error("Issue occurred while creating the user"));
+            }
+            log.info("User created successfully: {}", userModelDto1);
+            return ResponseEntity.ok(ResponseUtil.success("User created successfully", userModelDto1));
         }
-        log.info("User created successfully: {}", userModelDto1);
-        return ResponseEntity.ok(ResponseUtil.success("User created successfully", userModelDto1));
+        catch (Exception e){
+            log.info("-----------------------> Exception occurred while creating the user <---------------------------------- ");
+            log.error(e.getLocalizedMessage());
+            System.out.println(e);
+            return ResponseEntity.ok(ResponseUtil.error(e.getLocalizedMessage()));
+        }
     }
 
 }

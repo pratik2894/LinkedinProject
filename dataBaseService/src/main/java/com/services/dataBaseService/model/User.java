@@ -26,4 +26,5 @@ public class User {
     private String city;
     private List<ContactInfo> contactInfo;
     private String eventType;
+    private String email;
 }

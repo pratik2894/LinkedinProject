@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
+import java.util.Map;
+
 
 public class ResponseUtil {
 
@@ -17,5 +19,10 @@ public class ResponseUtil {
     public static <T> ApiResponse<T> error(String message) {
         return new ApiResponse<>("ERROR", message, null);
     }
+
+    public static <T> ApiResponse<T> FieldValidationError(String message , Map<String , String> validationError) {
+        return new ApiResponse<>("VALIDATION ERROR", message, validationError);
+    }
+
 
 }

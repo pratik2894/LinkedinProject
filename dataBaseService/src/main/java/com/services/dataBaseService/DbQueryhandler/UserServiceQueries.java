@@ -14,10 +14,10 @@ public class UserServiceQueries {
     public UserServiceQueries(Db1Config db1Config) {
         this.db1Config = db1Config;
     }
-    public void CreateUser(UUID userId, String City, String firstName, String Lastname, String userName, String Country) {
+    public void CreateUser(UUID userId, String City, String firstName, String Lastname, String userName, String Country , String email) {
         db1Config.UserjdbcTemplate()
-                .update("INSERT INTO user_table (user_id , username , first_name , last_name , country , city ) VALUES ( ? , ? , ? , ? , ? , ? )",
-                        userId, userName, firstName, Lastname, Country, City);
+                .update("INSERT INTO user_table (user_id , username , first_name , last_name , country , city , email ) VALUES ( ? , ? , ? , ? , ? , ? , ?)",
+                        userId, userName, firstName, Lastname, Country, City , email);
     }
 
 }
