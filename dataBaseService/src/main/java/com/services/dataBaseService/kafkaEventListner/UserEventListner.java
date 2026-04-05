@@ -25,11 +25,11 @@ public class UserEventListner {
             case "USER_CREATE":
                 userDbserviceHandler.CreateUser(event);
                 break;
-            case "UPDATE":
-                userDbserviceHandler.CreateUser(event);
+            case "USER_UPDATE":
+                userDbserviceHandler.UpdateUser(event);
                 break;
-            case "DELETE":
-                userDbserviceHandler.CreateUser(event);
+            case "USER_DELETE":
+                userDbserviceHandler.removeUser(event);
                 break;
         }
     }
