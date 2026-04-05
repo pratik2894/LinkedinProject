@@ -1,6 +1,8 @@
 package com.services.userService.ExcpetionHandler;
 
 import com.services.userService.ExcpetionHandler.customeExceptions.UserAlreadyExistException;
+import com.services.userService.ExcpetionHandler.customeExceptions.UserNotFound;
+import com.services.userService.ExcpetionHandler.customeExceptions.UserNotNull;
 import com.services.userService.configuration.ApiResponse;
 import com.services.userService.configuration.ResponseException;
 import lombok.extern.slf4j.Slf4j;
@@ -34,5 +36,17 @@ public class GlobalExceptionHandler {
         return ResponseEntity.badRequest().body(new ApiResponse<>("VALIDATION ERROR" , ex.getLocalizedMessage(), errors));
     }
 
+    @ExceptionHandler(UserNotNull.class)
+    public static ResponseEntity<ApiResponse<?>> userNotNull(UserNotNull ex) {
+        log.info("-----------------> User cannot be  null  <-------------------------------------");
+        Map<String , String > errors = new HashMap<>();
+        return ResponseEntity.badRequest().body(new ApiResponse<>("VALIDATION ERROR" , ex.getLocalizedMessage(), errors));
+    }
+    @ExceptionHandler(UserNotFound.class)
+    public static ResponseEntity<ApiResponse<?>> fieldValidation(UserNotFound ex) {
+        log.info("-----------------> Error occurred while fetching user <-------------------------------------");
+        Map<String , String > errors = new HashMap<>();
+        return ResponseEntity.badRequest().body(new ApiResponse<>("VALIDATION ERROR" , "User not found ", errors));
+    }
 
 }

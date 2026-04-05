@@ -12,6 +12,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Objects;
+import java.util.UUID;
 
 @Slf4j
 @RestController
@@ -37,6 +38,32 @@ public class userServiceController {
         }
         catch (Exception e){
             log.info("-----------------------> Exception occurred while creating the user <---------------------------------- ");
+            log.error(e.getLocalizedMessage());
+            System.out.println(e);
+            return ResponseEntity.ok(ResponseUtil.error(e.getLocalizedMessage()));
+        }
+    }
+    @PutMapping("/update/{userId}")
+    public ResponseEntity<ApiResponse<?>> createUser(@Valid @RequestBody userModelDto userModelDto , @PathVariable UUID userId)  {
+        try {
+            userModelDto user =  userService.userUpdateEvent(userModelDto , userId);
+            return ResponseEntity.ok(ResponseUtil.success("User updated successfully", user));
+        }
+        catch (Exception e){
+            log.info("-----------------------> Exception occurred while updating  the user <---------------------------------- ");
+            log.error(e.getLocalizedMessage());
+            System.out.println(e);
+            return ResponseEntity.ok(ResponseUtil.error(e.getLocalizedMessage()));
+        }
+    }
+    @DeleteMapping("/admin/delete/{userId}")
+    public ResponseEntity<ApiResponse<?>> DeleteUser( @PathVariable UUID userId)  {
+        try {
+            userModelDto user =  userService.userDeleteEvent(userId);
+            return ResponseEntity.ok(ResponseUtil.success("User Delete successfully", user));
+        }
+        catch (Exception e){
+            log.info("-----------------------> Exception occurred while updating  the user <---------------------------------- ");
             log.error(e.getLocalizedMessage());
             System.out.println(e);
             return ResponseEntity.ok(ResponseUtil.error(e.getLocalizedMessage()));

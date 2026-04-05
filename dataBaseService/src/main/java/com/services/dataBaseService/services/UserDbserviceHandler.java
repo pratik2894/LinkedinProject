@@ -18,7 +18,13 @@ public class UserDbserviceHandler {
 
     public void CreateUser(User user){
         userServiceQueries.CreateUser(user.getUserId(), user.getCity(), user.getFirstName(),  user.getLastName(),  user.getUsername(), user.getCountry() , user.getEmail());
-    }
+    };
+    public void UpdateUser(User user){
+        userServiceQueries.UpdateUser(user.getUserId(), user.getCity(), user.getFirstName(),  user.getLastName(),  user.getUsername(), user.getCountry() , user.getEmail());
+    };
+    public void removeUser(User user){
+        userServiceQueries.RemoveUser(user.getUserId());
+    };
 
 }
 
